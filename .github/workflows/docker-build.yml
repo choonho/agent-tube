@@ -42,5 +42,5 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           tags: ${{ github.event.inputs.docker_org }}/${{ github.event.inputs.image_name }}:${{ github.event.inputs.image_tag }}
