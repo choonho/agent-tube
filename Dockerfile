@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y python3 python3-pip
 COPY requirements.txt /app/requirements.txt
 RUN pip3 install --no-cache-dir -r /app/requirements.txt
 
-COPY . /app
+COPY app/youtube_agent.py /app/
 WORKDIR /app
 
 ENV YOUTUBE_URL=https://www.youtube.com/watch?v=dQw4w9WgXcQ
