@@ -5,6 +5,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 import random
 import os
+import tempfile
 
 def watch_youtube(video_url):
     # 브라우저 옵션 설정
@@ -17,6 +18,12 @@ def watch_youtube(video_url):
 
     # Headless로 실행하려면 이 줄 추가
     options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+
+    # 임시 디렉토리 지정
+    user_data_dir = tempfile.mkdtemp()
+    options.add_argument(f"--user-data-dir={user_data_dir}")
 
     # 드라이버 실행
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
